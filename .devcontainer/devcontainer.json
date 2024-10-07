@@ -19,6 +19,9 @@
 					"*.md": "vscode.markdown.preview.editor"
 				}
 			},
+			"extensions": [
+				"Blackboxapp.blackbox"
+			],
 		}
 	},
 
