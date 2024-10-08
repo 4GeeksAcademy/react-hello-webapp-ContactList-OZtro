@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 const initialState = {
@@ -13,6 +13,8 @@ const AddContact = () => {
     const { actions } = useContext(Context);
     const [newContact, setNewContact] = useState(initialState);
 
+    const  navigate = useNavigate();
+
     const handleChange = (e) => {
         setNewContact({
             ...newContact,
@@ -20,10 +22,10 @@ const AddContact = () => {
         });
     };
 
-    const handleSubmit = () => {
-        actions.addNewContact(newContact);
-        
-    };
+    const handleSubmit = async () => {
+       let result = await actions.addNewContact(newContact);
+        navigate("/")
+    }
 
     return (
         <div className="container">
@@ -85,9 +87,8 @@ const AddContact = () => {
             </div>
 
             <div className="d-grid gap-2 pt-3">
-                <button onClick={() => handleSubmit()} className="btn btn-primary">
-                    <strong>save</strong>
-                </button>
+
+                <button onClick={() => handleSubmit()} className="btn btn-primary"><strong>save</strong></button>
 
                 <Link to="/">
                     <p className="pe-none" aria-disabled="true">
@@ -95,8 +96,9 @@ const AddContact = () => {
                     </p>
                 </Link>
             </div>
-        </div>
-    );
-};
 
-export default AddContact;
+        </div>
+    )
+}
+
+export default AddContact

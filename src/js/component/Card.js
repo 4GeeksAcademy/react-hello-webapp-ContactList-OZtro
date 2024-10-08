@@ -47,7 +47,7 @@ export default function Card(props) {
 
                     </div>
                 </div>
-
+                
                 <div className='col-md-1 mt-3'>
                     <i onClick={() => handleDelete(contact.id)} style={{ cursor: "pointer" }} className="fa-solid fa-trash-can me-3"></i>
                 </div>
